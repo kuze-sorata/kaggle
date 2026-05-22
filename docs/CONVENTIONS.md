@@ -16,6 +16,7 @@
   - 安定したドキュメントと運用ルール置き場
   - 規約、手順、参照資料を置く
   - 下書き置き場にはしない
+  - 共通の進め方は `docs/kaggle_workflow.md` と `docs/codex_collaboration.md` にまとめる
 
 - コンペ配下の `experiments/`
   - `competitions/<competition_name>/experiments/` の中で使う
@@ -37,6 +38,7 @@
 - コンペごとの実験履歴は `competitions/<competition_name>/experiments/` に置く
 - `experiments/index.md` を、そのコンペの実験履歴の一覧として扱う
 - `expXXX.md` を、その実験の一次情報として扱う
+- 実験ログの書式は `docs/experiment_log_template.md` を基準にする
 
 ## コミットメッセージ
 
