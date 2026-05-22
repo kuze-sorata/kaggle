@@ -11,7 +11,6 @@
 - `src/`: 学習と推論のコード
 - `models/`: ローカル保存のモデル成果物
 - `submissions/`: 提出ファイル
-- `logs/`: 実行ログ
 - `experiments/`: 実験一覧と詳細ログ
 - `TODO.md`: やること一覧
 - `README.md`: そのコンペ固有の実行手順と補足

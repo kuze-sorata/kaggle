@@ -29,11 +29,3 @@ def save_model(model, path: str | Path) -> Path:
 
 def load_model(path: str | Path):
     return joblib.load(path)
-
-
-def write_text(path: str | Path, text: str) -> Path:
-    path = Path(path)
-    ensure_dir(path.parent)
-    path.write_text(text, encoding="utf-8")
-    return path
-

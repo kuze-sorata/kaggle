@@ -15,7 +15,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from config import get_config
 from features import TitanicFeatureEngineer
-from utils import ensure_dir, save_model, set_seed, write_text
+from utils import ensure_dir, save_model, set_seed
 
 
 BASELINE_FEATURE_COLUMNS = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked", "Name"]
@@ -112,8 +112,6 @@ def main() -> int:
         f"CV folds: {cfg.n_splits}",
         f"Model path: {model_path}",
     ]
-    write_text(cfg.log_dir / "train_report.txt", "\n".join(report) + "\n")
-
     print("\n".join(report))
     return 0
 

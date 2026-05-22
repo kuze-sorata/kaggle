@@ -12,7 +12,6 @@ class Config:
     data_dir: Path = Path("data")
     model_dir: Path = Path("models")
     submission_dir: Path = Path("submissions")
-    log_dir: Path = Path("logs")
     train_file: str = "train.csv"
     test_file: str = "test.csv"
     target_col: str = "Survived"
