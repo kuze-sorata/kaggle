@@ -6,15 +6,20 @@ import argparse
 from pathlib import Path
 
 import pandas as pd
-from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier, VotingClassifier
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from config import get_config
-from features import TitanicFeatureEngineer
-from preprocess import build_preprocessor
 from utils import ensure_dir, save_model, set_seed, write_text
+
+
+BASELINE_FEATURE_COLUMNS = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
+NUMERIC_COLUMNS = ["Age", "SibSp", "Parch", "Fare"]
+CATEGORICAL_COLUMNS = ["Pclass", "Sex", "Embarked"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -25,43 +30,48 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def build_model(random_state: int) -> VotingClassifier:
-    estimators = [
-        (
-            "lr",
-            LogisticRegression(
-                max_iter=3000,
-                C=0.7,
-                solver="lbfgs",
-                random_state=random_state,
-            ),
-        ),
-        (
-            "rf",
-            RandomForestClassifier(
-                n_estimators=500,
-                min_samples_leaf=2,
-                random_state=random_state,
-                n_jobs=-1,
-            ),
-        ),
-        (
-            "hgb",
-            HistGradientBoostingClassifier(
-                learning_rate=0.05,
-                max_depth=3,
-                max_iter=250,
-                random_state=random_state,
-            ),
-        ),
-    ]
-    return VotingClassifier(estimators=estimators, voting="soft", weights=[2, 2, 3])
+def _make_one_hot_encoder() -> OneHotEncoder:
+    try:
+        return OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+    except TypeError:
+        return OneHotEncoder(handle_unknown="ignore", sparse=False)
+
+
+def build_preprocessor() -> ColumnTransformer:
+    numeric_pipeline = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler", StandardScaler()),
+        ]
+    )
+    categorical_pipeline = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer(strategy="most_frequent")),
+            ("encoder", _make_one_hot_encoder()),
+        ]
+    )
+    return ColumnTransformer(
+        transformers=[
+            ("num", numeric_pipeline, NUMERIC_COLUMNS),
+            ("cat", categorical_pipeline, CATEGORICAL_COLUMNS),
+        ],
+        remainder="drop",
+        sparse_threshold=0.0,
+    )
+
+
+def build_model(random_state: int) -> LogisticRegression:
+    return LogisticRegression(
+        max_iter=3000,
+        C=1.0,
+        solver="lbfgs",
+        random_state=random_state,
+    )
 
 
 def build_pipeline(random_state: int) -> Pipeline:
     return Pipeline(
         steps=[
-            ("features", TitanicFeatureEngineer()),
             ("preprocess", build_preprocessor()),
             ("model", build_model(random_state)),
         ]
@@ -81,7 +91,7 @@ def main() -> int:
     train_path = cfg.data_dir / cfg.train_file
     df = pd.read_csv(train_path)
     y = df[cfg.target_col].astype(int)
-    X = df.drop(columns=[cfg.target_col])
+    X = df[BASELINE_FEATURE_COLUMNS].copy()
 
     pipeline = build_pipeline(cfg.random_state)
     cv = StratifiedKFold(n_splits=cfg.n_splits, shuffle=True, random_state=cfg.random_state)
