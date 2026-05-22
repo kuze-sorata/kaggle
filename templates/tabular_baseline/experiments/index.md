@@ -1,6 +1,5 @@
-# Experiments
+# 実験一覧
 
-| Exp    | Date       | Topic    | CV Score | LB Score | Status           | Notes            |
-| ------ | ---------- | -------- | -------- | -------- | ---------------- | ---------------- |
-| exp001 | YYYY-MM-DD | Baseline | TBD      | TBD      | Done/In Progress | Initial baseline |
-
+| Exp    | 日付       | トピック   | CV Score | LB Score | ステータス    | メモ             |
+| ------ | ---------- | ---------- | -------- | -------- | ------------- | ---------------- |
+| exp001 | YYYY-MM-DD | ベースライン | TBD      | TBD      | 完了 / 進行中 | 初回ベースライン |

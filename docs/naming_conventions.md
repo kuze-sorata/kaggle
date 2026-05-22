@@ -24,3 +24,14 @@
 - コード識別子の中で日本語と英語を混ぜること
 - `temp.py`、`new.py`、`final_final.py` のような曖昧な名前
 - 長すぎて目的が分かりにくい名前
+
+## コミットメッセージの形
+
+- 件名は日本語で書く
+- 本文は箇条書きで書く
+- 例:
+  - 件名: `実験テンプレートを日本語化`
+  - 本文:
+    - `templates/tabular_baseline/experiments/` の文言を日本語化
+    - `competitions/titanic/experiments/` の既存ファイルを日本語化
+    - `create_competition.py` の生成テンプレートを日本語化

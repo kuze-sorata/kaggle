@@ -49,41 +49,41 @@ def initialize_experiments(target: Path) -> None:
     experiments.mkdir(parents=True, exist_ok=True)
 
     (experiments / "index.md").write_text(
-        "# Experiments\n\n"
-        "| Exp    | Date       | Topic    | CV Score | LB Score | Status           | Notes            |\n"
-        "| ------ | ---------- | -------- | -------- | -------- | ---------------- | ---------------- |\n"
-        "| exp001 | YYYY-MM-DD | Baseline | TBD      | TBD      | Done/In Progress | Initial baseline |\n",
+        "# 実験一覧\n\n"
+        "| Exp    | 日付       | トピック   | CV Score | LB Score | ステータス          | メモ             |\n"
+        "| ------ | ---------- | ---------- | -------- | -------- | ------------------- | ---------------- |\n"
+        "| exp001 | YYYY-MM-DD | ベースライン | TBD      | TBD      | 完了 / 進行中       | 初回ベースライン |\n",
         encoding="utf-8",
     )
 
     (experiments / "exp001.md").write_text(
-        "# exp001 - Baseline\n\n"
-        "## Date\n\n"
+        "# exp001 - ベースライン\n\n"
+        "## 日付\n\n"
         "YYYY-MM-DD\n\n"
-        "## Competition\n\n"
-        "## Objective\n\n"
-        "Create the first reproducible baseline.\n\n"
-        "## Hypothesis\n\n"
-        "A simple baseline model will reveal the basic data structure and validation behavior.\n\n"
-        "## Why\n\n"
-        "Before adding complex features or models, we need a reliable benchmark.\n\n"
-        "## Changes\n\n"
-        "* Created baseline preprocessing\n"
-        "* Built initial model\n"
-        "* Generated first submission\n\n"
-        "## Validation Design\n\n"
-        "Describe the CV strategy and why it is appropriate.\n\n"
-        "## CV Score\n\n"
+        "## コンペ名\n\n"
+        "## 目的\n\n"
+        "最初の再現可能なベースラインを作る。\n\n"
+        "## 仮説\n\n"
+        "シンプルなベースラインモデルを作ることで、データの基本構造と検証時の挙動が見える。\n\n"
+        "## 理由\n\n"
+        "複雑な特徴量やモデルを入れる前に、信頼できる基準点が必要。\n\n"
+        "## 変更内容\n\n"
+        "* ベースライン前処理を作成した\n"
+        "* 初期モデルを構築した\n"
+        "* 最初の提出ファイルを生成した\n\n"
+        "## 検証設計\n\n"
+        "CV の戦略と、その戦略が妥当な理由を書く。\n\n"
+        "## CV スコア\n\n"
         "TBD\n\n"
-        "## LB Score\n\n"
+        "## LB スコア\n\n"
         "TBD\n\n"
-        "## Findings\n\n"
+        "## 気づき\n\n"
         "*\n\n"
-        "## Problems / Risks\n\n"
-        "* Possible leakage:\n"
-        "* Distribution shift:\n"
-        "* Validation mismatch:\n\n"
-        "## Next Actions\n\n"
+        "## 問題点 / リスク\n\n"
+        "* リークの可能性:\n"
+        "* 分布ずれ:\n"
+        "* 検証との不一致:\n\n"
+        "## 次のアクション\n\n"
         "*\n",
         encoding="utf-8",
     )
