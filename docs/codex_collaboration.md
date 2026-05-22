@@ -24,6 +24,16 @@
 - notebook で試しただけの特徴量は `features.py` に入れない
 - `train.py` と `features.py` は、採用が決まった内容だけで上書きしていく
 - 過去の試行錯誤は `experiments/`、notebook、git 履歴で追う
+- モデル保存時は `train.py` に必ず `--model-path` を付けて実験番号付きの保存先を明示する
+- 提出生成時は `predict.py` に必ず `--model-path` と `--output` を付けて、対応するモデルと提出 CSV を明示する
+
+## 成果物の命名ルール
+
+- notebook: `expXXX_<topic>.ipynb`
+- model: `models/expXXX_<topic>.joblib`
+- submission: `submissions/expXXX_<topic>.csv`
+- experiment log: `experiments/expXXX.md`
+- `experiments/expXXX.md` には使用した model と submission のパスを明記する
 
 ## 1 サイクルの基準
 
@@ -31,6 +41,16 @@
 - EDA で面白い観察があっても、次の実験では 1 仮説だけを追加して CV 差分を見る
 - 「何が効いたか分からない状態」を避けるため、複数変更を同時に正式採用しない
 - 効いたと判断した変更だけを `src/train.py`、必要なら `src/features.py` に反映する
+
+## 特徴量候補の扱い
+
+- 単独で強く効いた特徴量は `採用候補` として扱う
+- 単独では弱いが、相互作用がありそうな特徴量は `保留候補` として残す
+- 単独でも弱く、組み合わせの筋も薄いものは `却下候補` として扱う
+- `保留候補` はすぐ捨てず、強い特徴量を採用した後に再評価してよい
+- ただし、全組み合わせの総当たりはしない
+- 基本は「現在のベスト構成」に対して 1 変更だけ足して比較する
+- 例: baseline -> baseline + A -> baseline + A + C のように勝ち残り方式で進める
 
 ## 依頼の最小セット
 

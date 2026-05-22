@@ -8,6 +8,28 @@ import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
+TITLE_NORMALIZATION = {
+    "Mlle": "Miss",
+    "Ms": "Miss",
+    "Mme": "Mrs",
+    "Lady": "Rare",
+    "Countess": "Rare",
+    "Dona": "Rare",
+    "Dr": "Rare",
+    "Rev": "Rare",
+    "Col": "Rare",
+    "Major": "Rare",
+    "Capt": "Rare",
+    "Sir": "Rare",
+    "Don": "Rare",
+    "Jonkheer": "Rare",
+    "Master": "Master",
+    "Miss": "Miss",
+    "Mr": "Mr",
+    "Mrs": "Mrs",
+}
+
+
 class TitanicFeatureEngineer(BaseEstimator, TransformerMixin):
     """Minimal feature transformer for accepted features only.
 
@@ -19,4 +41,14 @@ class TitanicFeatureEngineer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
-        return X.copy()
+        df = X.copy()
+        title = df["Name"].fillna("").astype(str).str.extract(r",\s*([^\.]+)\.", expand=False)
+        df["Title"] = title.fillna("Rare").map(lambda x: TITLE_NORMALIZATION.get(x, "Rare")).astype(str)
+        family_size = df["SibSp"].fillna(0) + df["Parch"].fillna(0) + 1
+        df["FamilyGroup"] = pd.cut(
+            family_size,
+            bins=[0, 1, 4, 100],
+            labels=["alone", "small", "large"],
+            right=True,
+        ).astype(str)
+        return df.drop(columns=["Name"])

@@ -20,8 +20,8 @@ class Config:
     random_state: int = 42
     valid_size: float = 0.2
     n_splits: int = 5
-    model_filename: str = "titanic_baseline_lr.joblib"
-    submission_filename: str = "baseline_submission.csv"
+    model_filename: str = "titanic_model.joblib"
+    submission_filename: str = "submission.csv"
 
 
 def get_config() -> Config:

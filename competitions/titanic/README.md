@@ -29,8 +29,29 @@
 - `exp001` は真の baseline として扱う
 - `exp001` の baseline は、生の 7 列 `Pclass`, `Sex`, `Age`, `SibSp`, `Parch`, `Fare`, `Embarked` を使う
 - baseline では `Title`、`HasCabin`、`FamilySize` などの追加特徴量はまだ使わない
+- 現在の正式版では `Title` と `FamilyGroup` を採用済み特徴量として `src/features.py` に反映している
 - `notebooks/` では EDA や 1 仮説ずつの試作を行う
 - 試して良かったものだけ `src/train.py` と、必要なら `src/features.py` に反映する
 - `src/train.py` は「今の正式学習版」、`src/predict.py` は「今の正式提出版」として上書き運用する
 - `src/features.py` は採用済み特徴量だけを残す場所として扱う
 - 試しただけの特徴量ロジックは `features.py` に入れず、notebook と `experiments/` に残す
+- モデル保存時は必ず `--model-path` を付けて、実験番号付きの成果物名を明示する
+- 提出生成時は必ず `--model-path` と `--output` を付けて、実験番号付きの提出 CSV を明示する
+- 特徴量は `採用候補`、`保留候補`、`却下候補` の3つで扱う
+- 単独で強く効いたものを先に採用候補とする
+- 単独では弱いが相互作用がありそうなものは保留候補として残し、後で再評価する
+- 全組み合わせの総当たりはせず、基本は「現在のベスト構成」に 1 変更ずつ足して比較する
+
+## 推奨する命名ルール
+
+- notebook: `expXXX_<topic>.ipynb`
+- model: `models/expXXX_<topic>.joblib`
+- submission: `submissions/expXXX_<topic>.csv`
+- experiment log: `experiments/expXXX.md`
+
+例:
+
+- `notebooks/exp003_title.ipynb`
+- `models/exp003_title.joblib`
+- `submissions/exp003_title.csv`
+- `experiments/exp003.md`

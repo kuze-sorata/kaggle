@@ -7,9 +7,13 @@
 ```md
 # 実験一覧
 
-| Exp    | Date       | Phase    | Topic        | CV Score | LB Score | Status | Notes |
-| ------ | ---------- | -------- | ------------ | -------- | -------- | ------ | ----- |
-| exp001 | 2026-05-22 | Baseline | first submit | TBD      | TBD      | WIP    | 初回提出 |
+## exp001
+
+- Date: 2026-05-22
+- Phase: Baseline
+- Change: first submit
+- Result: CV TBD / LB TBD
+- Status: WIP
 ```
 
 ## `experiments/expXXX.md`
@@ -72,6 +76,9 @@ YYYY-MM-DD
 ## 運用ルール
 
 - `フェーズ` は標準フローのどこに属するかを明示する
+- `experiments/index.md` は `## expXXX` ごとの短いブロックで書く
+- 一覧では `Change` にその実験で何を変えたかを短く書く
+- 一覧では `Result` に `CV` と `LB` をまとめて書く
 - `変更内容` は事実だけを書く
 - `気づき` と `次のアクション` を分ける
 - 数値が未確定なら `TBD` と書く

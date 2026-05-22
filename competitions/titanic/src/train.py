@@ -14,12 +14,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from config import get_config
+from features import TitanicFeatureEngineer
 from utils import ensure_dir, save_model, set_seed, write_text
 
 
-BASELINE_FEATURE_COLUMNS = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
+BASELINE_FEATURE_COLUMNS = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked", "Name"]
 NUMERIC_COLUMNS = ["Age", "SibSp", "Parch", "Fare"]
-CATEGORICAL_COLUMNS = ["Pclass", "Sex", "Embarked"]
+CATEGORICAL_COLUMNS = ["Pclass", "Sex", "Embarked", "Title", "FamilyGroup"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -72,6 +73,7 @@ def build_model(random_state: int) -> LogisticRegression:
 def build_pipeline(random_state: int) -> Pipeline:
     return Pipeline(
         steps=[
+            ("features", TitanicFeatureEngineer()),
             ("preprocess", build_preprocessor()),
             ("model", build_model(random_state)),
         ]
