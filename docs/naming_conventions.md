@@ -10,11 +10,13 @@
 ## 推奨パターン
 
 - コンペフォルダ: `competitions/<competition_name>/`
-- 実験ログ: `experiment_log.md`
+- 実験一覧: `experiments/index.md`
+- 実験詳細: `experiments/exp001.md`
+- 追加の実験: `experiments/exp002.md` のように増やす
+- 実験アーカイブ: `experiments/archive/`
 - ワークスペースメモ: `workspace_notes/YYYY-MM-DD_short_topic.md`
-- コンペメモ: `competitions/<competition_name>/notes/YYYY-MM-DD_short_topic.md`
 - ワークスペースの実験まとめ: `workspace_experiments/<topic>.md`
-- コンペの実験まとめ: `competitions/<competition_name>/experiments/<topic>.md`
+- コンペの実験詳細: `competitions/<competition_name>/experiments/expXXX.md`
 - 共有ヘルパー: `shared/<area>/<name>.py`
 
 ## 避けたいもの
@@ -22,4 +24,3 @@
 - コード識別子の中で日本語と英語を混ぜること
 - `temp.py`、`new.py`、`final_final.py` のような曖昧な名前
 - 長すぎて目的が分かりにくい名前
-

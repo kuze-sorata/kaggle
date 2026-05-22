@@ -10,9 +10,8 @@
 - `models/`: 学習済み成果物の保存先
 - `submissions/`: 生成した提出ファイル
 - `logs/`: 実行ログ
-- `notes/`: コンペ固有のラフメモ
-- `experiments/`: コンペ固有の実験まとめ
-- `docs/`: コンペ固有の安定した参照資料
+- `experiments/`: 実験一覧と詳細ログ
+- `TODO.md`: やること一覧
 
 ## 進め方
 
@@ -20,4 +19,6 @@
 2. `src/config.py` でデータセット固有の設定を調整する
 3. `src/train.py` で学習を実行する
 4. `src/predict.py` で提出ファイルを作る
-5. 結果は `experiment_log.md` に残す
+5. `experiments/index.md` と `experiments/expXXX.md` に結果を残す
+6. `TODO.md` に残タスクを書く
+

@@ -34,9 +34,10 @@ kaggle/
 - コンペ固有の作業は `competitions/<competition_name>/` にまとめる
 - 再利用できるコードは `shared/` に置いて重複を減らす
 - Notebook は探索用に使い、安定した処理は `src/` に移す
-- ログ、仮説、評価結果は `experiment_log.md` に残す
+- 実験の一覧は `experiments/index.md` に、詳細は `experiments/expXXX.md` に残す
 - ワークスペース全体のメモは `workspace_notes/`、横断比較は `workspace_experiments/`、安定したルールは `docs/` に置く
-- コンペごとのメモ、実験、資料は `competitions/<competition_name>/` 配下に置く
+- コンペごとの実験は `competitions/<competition_name>/experiments/` 配下で管理する
+- `data/` は Git 管理しない
 - 大きな生データ、モデル成果物、Notebook のキャッシュはコミットしない
 
 ## 言語方針
@@ -47,7 +48,9 @@ kaggle/
 
 ## 実験ログの書き方
 
-- 1つの実験を 1 セクションで書く。例: `## exp001`
+- `experiments/index.md` は全実験の一覧として使う
+- `experiments/expXXX.md` は各実験の詳細ログとして使う
+- 1つの実験を 1 ファイルで管理する
 - 日付、コンペ名、目的、仮説、理由、変更内容、CV スコア、LB スコア、結果、次のアクションを残す
 - 成功した実験だけでなく、失敗した実験も記録する
 - 短く、事実ベースで、再現しやすく書く
@@ -73,12 +76,19 @@ kaggle/
 1. ベーステンプレートから新しいコンペ用フォルダを作る
 2. データをローカルに置く
 3. `src/` で特徴量と学習処理を実装する
-4. すべての重要な変更を `experiment_log.md` に残す
+4. すべての重要な変更を `experiments/index.md` と `experiments/expXXX.md` に残す
 5. 必要な成果物だけを残す
+
+### データの置き方
+
+```bash
+python scripts/download_competition_data.py titanic
+```
+
+Kaggle CLI と API 認証が整っている場合、`competitions/titanic/data/` にデータを置けます。
 
 ### 新しいコンペを作る
 
 ```bash
 python scripts/create_competition.py <competition_name>
 ```
-

@@ -17,31 +17,31 @@
   - 規約、手順、参照資料を置く
   - 下書き置き場にはしない
 
-- コンペ配下の `notes/` / `experiments/` / `docs/`
-  - `competitions/<competition_name>/` の中で使う
-  - そのコンペ固有の作業場所として扱う
-  - ワークスペース全体の資料とは分ける
+- コンペ配下の `experiments/`
+  - `competitions/<competition_name>/experiments/` の中で使う
+  - そのコンペ固有の実験履歴、比較、メモを置く
+  - `index.md` と `expXXX.md` で管理する
 
 ## 書き方の方針
 
 - コード、ファイル名、ディレクトリ名、公開向け文書は英語を基本にする
 - `workspace_notes/` と実験メモでは、日本語を自由に使ってよい
+- `competitions/<competition_name>/experiments/` の本文は日本語を基本にする
 - 1つのファイルは 1 つの目的に集中させる
 - 識別子、コード、機械可読な見出しの中で、日本語と英語を混ぜすぎない
 
 ## 実験メモ
 
-- 短く、まとまっていない途中メモは `workspace_notes/` や各コンペの `notes/` に置く
-- 後で比較したい結果は `workspace_experiments/` や各コンペの `experiments/` に置く
-- コンペごとの実験履歴は `experiment_log.md` に置く
-- `experiment_log.md` を、そのコンペの実験履歴の一次情報として扱う
+- 短く、まとまっていない途中メモは `workspace_notes/` に置く
+- 後で比較したい結果は `workspace_experiments/` に置く
+- コンペごとの実験履歴は `competitions/<competition_name>/experiments/` に置く
+- `experiments/index.md` を、そのコンペの実験履歴の一覧として扱う
+- `expXXX.md` を、その実験の一次情報として扱う
 
 ## 例
 
 - `workspace_notes/2026-05-22_feature_ideas.md`
 - `workspace_experiments/lgbm_vs_catboost.md`
 - `docs/workflow.md`
-- `competitions/titanic/notes/2026-05-22_leakage_check.md`
-- `competitions/titanic/experiments/lgbm_baseline.md`
-- `competitions/titanic/docs/assumptions.md`
-
+- `competitions/titanic/experiments/index.md`
+- `competitions/titanic/experiments/exp001.md`

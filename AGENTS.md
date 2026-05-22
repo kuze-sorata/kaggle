@@ -15,10 +15,12 @@
 
 - コード、ファイル名、ディレクトリ名、公開向けドキュメントは英語を基本にする
 - `workspace_notes/` と実験メモでは、日本語を使ってよい
+- `experiments/` 配下の本文は日本語を基本にする
+- 実験履歴は `experiments/index.md` と `experiments/expXXX.md` で管理する
 - 実験ログは短く、事実ベースで、再現しやすく書く
 - 各コンペで共通化できる処理は `shared/` に寄せる
 - `notes` / `experiments` / `docs` の使い分けは `docs/CONVENTIONS.md` を参照する
-- コンペ固有の下書きや試行錯誤は `competitions/<competition_name>/` の中に置く
+- コンペ固有の実験は `competitions/<competition_name>/experiments/` の中に置く
 
 ## 制約
 
