@@ -7,6 +7,7 @@ import argparse
 import shutil
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 
 
@@ -42,11 +43,19 @@ def main() -> int:
 
     target.mkdir(parents=True, exist_ok=True)
 
-    command = [kaggle, "competitions", "download", "-c", args.competition, "-p", str(target), "--unzip"]
+    command = [kaggle, "competitions", "download", "-c", args.competition, "-p", str(target)]
     completed = subprocess.run(command, check=False)
-    return completed.returncode
+    if completed.returncode != 0:
+        return completed.returncode
+
+    archive = target / f"{args.competition}.zip"
+    if archive.exists():
+        with zipfile.ZipFile(archive) as zf:
+            zf.extractall(target)
+        archive.unlink()
+
+    return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
