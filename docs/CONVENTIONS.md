@@ -25,8 +25,10 @@
 
 ## 書き方の方針
 
-- コード、ファイル名、ディレクトリ名、公開向け文書は英語を基本にする
-- `workspace_notes/` と実験メモでは、日本語を自由に使ってよい
+- コード、識別子、ファイル名、ディレクトリ名は英語を基本にする
+- このリポジトリ内の自分用ドキュメントは日本語を基本にする
+- 外部公開を前提にする Notebook や公開向け記事だけは英語で作成してよい
+- `workspace_notes/`、`workspace_experiments/`、`docs/`、各コンペ配下の運用文書は日本語で書く
 - `competitions/<competition_name>/experiments/` の本文は日本語を基本にする
 - 1つのファイルは 1 つの目的に集中させる
 - 識別子、コード、機械可読な見出しの中で、日本語と英語を混ぜすぎない
@@ -49,7 +51,7 @@
 
 ## 例
 
-- `workspace_notes/2026-05-22_feature_ideas.md`
+- `workspace_notes/2026-05-22_特徴量アイデア.md`
 - `workspace_experiments/lgbm_vs_catboost.md`
 - `docs/workflow.md`
 - `competitions/titanic/experiments/index.md`

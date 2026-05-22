@@ -4,6 +4,8 @@
 
 このディレクトリは `Titanic` コンペ固有の実装と実験履歴を置く場所です。進め方そのものは [docs/kaggle_workflow.md](/home/sora/dev/kaggle/docs/kaggle_workflow.md) を参照し、Codex への依頼方法は [docs/codex_collaboration.md](/home/sora/dev/kaggle/docs/codex_collaboration.md) を参照します。
 
+問題設定の整理は [problem_understanding.md](/home/sora/dev/kaggle/competitions/titanic/problem_understanding.md) を起点にします。
+
 ## 使い方
 
 1. Kaggle から `train.csv` と `test.csv` を `data/` に置く

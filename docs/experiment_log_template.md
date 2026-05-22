@@ -1,4 +1,4 @@
-# Experiment Log Template
+# 実験ログテンプレート
 
 このテンプレートは、各コンペの `experiments/` に共通で使うための基準です。
 
@@ -15,63 +15,63 @@
 ## `experiments/expXXX.md`
 
 ```md
-# expXXX - short title
+# expXXX - 実験タイトル
 
-## Date
+## 日付
 
 YYYY-MM-DD
 
-## Competition
+## コンペ名
 
 <competition_name>
 
-## Phase
+## フェーズ
 
-Problem Understanding / Baseline / CV / EDA / Feature Engineering / Model Comparison / Submission / Experiment Logging
+問題理解 / ベースライン / CV / EDA / 特徴量設計 / モデル比較 / 提出 / 実験記録
 
-## Objective
+## 目的
 
 今回の実験で達成したいことを 1-2 文で書く。
 
-## Hypothesis
+## 仮説
 
 何が効くと考えたかを書く。
 
-## Reason
+## 理由
 
 なぜその仮説を持ったかを書く。
 
-## Changes
+## 変更内容
 
 - 実装・設定・データ処理の変更点
 
-## Validation Plan
+## 検証設計
 
 - 分割方法
 - 評価指標
 - 比較条件
 
-## Result
+## 結果
 
 - CV:
 - LB:
 
-## Observations
+## 気づき
 
 - 事実ベースの気づき
 
-## Risks
+## リスク
 
 - リーク、分布ずれ、評価の不安定さなど
 
-## Next Actions
+## 次のアクション
 
 - 次に試すこと
 ```
 
 ## 運用ルール
 
-- `Phase` は標準フローのどこに属するかを明示する
-- `Changes` は事実だけを書く
-- `Observations` と `Next Actions` を分ける
+- `フェーズ` は標準フローのどこに属するかを明示する
+- `変更内容` は事実だけを書く
+- `気づき` と `次のアクション` を分ける
 - 数値が未確定なら `TBD` と書く
