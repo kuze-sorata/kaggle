@@ -51,4 +51,7 @@ class TitanicFeatureEngineer(BaseEstimator, TransformerMixin):
             labels=["alone", "small", "large"],
             right=True,
         ).astype(str)
+        df["SexPclass"] = (
+            df["Sex"].fillna("missing").astype(str) + "_" + df["Pclass"].fillna(-1).astype(int).astype(str)
+        )
         return df.drop(columns=["Name"])

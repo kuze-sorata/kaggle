@@ -20,7 +20,7 @@ from utils import ensure_dir, save_model, set_seed
 
 BASELINE_FEATURE_COLUMNS = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked", "Name"]
 NUMERIC_COLUMNS = ["Age", "SibSp", "Parch", "Fare"]
-CATEGORICAL_COLUMNS = ["Pclass", "Sex", "Embarked", "Title", "FamilyGroup"]
+CATEGORICAL_COLUMNS = ["Pclass", "Sex", "Embarked", "Title", "FamilyGroup", "SexPclass"]
 
 
 def parse_args() -> argparse.Namespace:

@@ -23,13 +23,15 @@
 - `submissions/` は提出ファイル
 - `models/` は学習済みモデル
 - `data/` は Git 管理しない
+- 並列で実験を進める場合は、最初に `STATUS.md` を見て現在の baseline、予約済み実験番号、担当範囲を確認する
+- 並列運用の共通ルールはリポジトリルートの `AGENTS.md` を参照する
 
 ## 現在の運用ルール
 
 - `exp001` は真の baseline として扱う
 - `exp001` の baseline は、生の 7 列 `Pclass`, `Sex`, `Age`, `SibSp`, `Parch`, `Fare`, `Embarked` を使う
 - baseline では `Title`、`HasCabin`、`FamilySize` などの追加特徴量はまだ使わない
-- 現在の正式版では `Title` と `FamilyGroup` を採用済み特徴量として `src/features.py` に反映している
+- 現在の正式版では `Title`、`FamilyGroup`、`SexPclass` を採用済み特徴量として `src/features.py` に反映している
 - `notebooks/` では EDA や 1 仮説ずつの試作を行う
 - 試して良かったものだけ `src/train.py` と、必要なら `src/features.py` に反映する
 - `src/train.py` は「今の正式学習版」、`src/predict.py` は「今の正式提出版」として上書き運用する

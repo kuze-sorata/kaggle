@@ -22,6 +22,16 @@
 - `notes` / `experiments` / `docs` の使い分けは `docs/CONVENTIONS.md` を参照する
 - コンペ固有の実験は `competitions/<competition_name>/experiments/` の中に置く
 
+## 並列運用
+
+- 複数の Codex やサブエージェントで同じコンペを並列に進める場合は、会話履歴ではなく共有ファイルを最新の前提として扱う
+- 親子運用の補助文書は `AGENTS/` 配下を参照する
+- `competitions/<competition_name>/STATUS.md` がある場合は、作業開始前に必ず確認し、現在の baseline、予約済み実験番号、担当範囲をそこで共有する
+- 実験番号は開始前に予約し、同じ `expXXX` を複数の Codex で共有しない
+- notebook、submission、experiment log は同じ実験番号でそろえる
+- 並列実行中は、原則として各 Codex は notebook と実験ログの更新までを担当する
+- `src/features.py`、`src/train.py`、`src/predict.py` などの正式コード更新は、担当を 1 つに決めて衝突を避ける
+
 ## 制約
 
 - `sudo` は使わない

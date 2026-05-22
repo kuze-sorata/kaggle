@@ -47,3 +47,27 @@
 - Change: add `Title` + `FamilyGroup`
 - Result: CV 0.82939 / LB 0.77272
 - Status: Submitted
+
+## exp007
+
+- Date: 2026-05-22
+- Phase: Feature
+- Change: add `SexPclass` on top of `Title` + `FamilyGroup`
+- Result: CV 0.83614 / LB 0.77511
+- Status: Submitted
+
+## exp009
+
+- Date: 2026-05-22
+- Phase: Feature
+- Change: add `FareBand` on top of `Title` + `FamilyGroup` + `SexPclass`
+- Result: CV 0.83275 / LB Not Submitted
+- Status: Done
+
+## exp008
+
+- Date: 2026-05-22
+- Phase: Feature
+- Change: add `FareBand` on top of `Title` + `FamilyGroup`
+- Result: CV 0.82827 / LB TBD
+- Status: Done
