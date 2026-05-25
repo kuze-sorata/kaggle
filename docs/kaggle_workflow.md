@@ -7,6 +7,7 @@
 - 進め方を固定し、毎回のコンペで同じ型を反復できるようにする
 - 実験を再現可能にし、CV と LB の関係を追えるようにする
 - Codex に依頼するときの前提を揃え、手戻りを減らす
+- 親エージェントと子エージェントの分担を固定し、並列実験でも競合しないようにする
 
 ## 標準フロー
 
@@ -18,6 +19,37 @@
 6. モデル比較
 7. 提出
 8. 実験記録
+9. 区切り判断
+
+## 開始時チェックリスト
+
+新しいコンペを始めるときは、最初に次を揃える。
+
+1. `competitions/<competition_name>/README.md`
+2. `competitions/<competition_name>/TODO.md`
+3. `competitions/<competition_name>/STATUS.md`
+4. `competitions/<competition_name>/experiments/index.md`
+5. `competitions/<competition_name>/requirements.txt`
+6. `competitions/<competition_name>/notebooks/`
+7. `competitions/<competition_name>/submissions/`
+8. `competitions/<competition_name>/src/`
+
+`.venv` は自動生成前提ではなく、作業開始時に各コンペ配下で明示的に作る。
+
+```bash
+cd competitions/<competition_name>
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## 親エージェント運用
+
+- 同一コンペで複数実験を回す場合は、親エージェント 1 つと子エージェント複数の形を基本にする
+- 親は `STATUS.md` で baseline、次の experiment id、active assignments を管理する
+- 子は割り当て済みの `expXXX` だけを使い、原則として `notebooks/`、`experiments/`、`submissions/` の更新だけを担当する
+- `src/` の正式更新、baseline の昇格、`experiments/index.md` の最終整合は親が担当する
+- 会話履歴より `STATUS.md` を優先する
 
 ## 各フェーズの進め方
 
@@ -54,6 +86,7 @@
   - 問題に合った分割方法を決める
   - 評価指標を本番と揃える
   - seed と fold 数を固定する
+  - 採用判断に使う差分のしきい値を意識する
 - 典型例
   - 分類: `StratifiedKFold`
   - 回帰: `KFold`
@@ -61,6 +94,16 @@
   - 時系列: 時系列分割
 - 完了条件
   - 以後の改善を CV 基準で比較できる
+
+### CV 設計で最低限見ること
+
+- fold ごとの score
+- mean だけでなく std
+- random_state を 1 個だけで過信しないこと
+- Public LB とズレたときに、まず CV の不安定さを疑えること
+
+小さい表形式コンペでは、`+0.002` 前後の差は split の偶然で消えることがある。  
+Titanic のような小規模データでは、必要に応じて複数 seed や単純 holdout でも傾向を再確認する。
 
 ### 4. EDA
 
@@ -101,6 +144,13 @@
 - 完了条件
   - 現時点の第一候補モデルが決まっている
 
+### モデル比較の原則
+
+- まずは「特徴量を固定してモデルだけ変える」
+- 次に「モデルを固定して特徴量だけ変える」
+- 1 回の実験で、モデル変更と特徴量変更を同時に混ぜない
+- CV で小幅改善しても、LB 悪化が出たら採用を保留する
+
 ### 7. 提出
 
 - やること
@@ -129,6 +179,19 @@
 - 完了条件
   - 数週間後に見返しても再現できる
 
+### 9. 区切り判断
+
+- やること
+  - 現時点の正式 baseline を決める
+  - 続ける理由があるか、次のコンペに移るべきかを判断する
+  - README、TODO、STATUS に到達点を書く
+- 典型的な区切りの条件
+  - 小さい特徴追加で伸びなくなった
+  - CV と LB のズレ要因を一度確認できた
+  - 次の学びが別コンペの方で大きい
+- 完了条件
+  - 「このコンペで何が分かり、何を採用し、何を保留にしたか」が文書で残っている
+
 ## 1 サイクルの基本単位
 
 - 1 仮説
@@ -148,6 +211,7 @@
 - モデル比較: 「比較条件を固定して、モデル差だけ見えるようにして」
 - 提出: 「この実験に対応する提出ファイルを生成して記録して」
 - 実験記録: 「今回の変更を `experiments/index.md` と `expXXX.md` に反映して」
+- 区切り判断: 「このコンペの到達点を整理して、README と TODO に締めを残して」
 
 ## 避けること
 
@@ -155,3 +219,5 @@
 - 一度に複数の変更を混ぜる
 - 実験を記録せず、後から思い出しで埋める
 - notebooks だけで改善を進め、正式コードに戻さない
+- CV の小差をそのまま採用判断に使う
+- `STATUS.md` を更新せずに並列実験を始める
