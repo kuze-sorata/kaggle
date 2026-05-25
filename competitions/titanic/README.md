@@ -44,6 +44,15 @@
 - 単独では弱いが相互作用がありそうなものは保留候補として残し、後で再評価する
 - 全組み合わせの総当たりはせず、基本は「現在のベスト構成」に 1 変更ずつ足して比較する
 
+## 現時点の結論
+
+- 正式 baseline は `exp007` とし、`Title`、`FamilyGroup`、`SexPclass` を採用済み特徴量として扱う
+- `AgeBand`、`TicketGroupSize`、`FareBand` の追加では baseline を更新できなかった
+- `RandomForest` への単純置き換えは大きく悪化した
+- `CatBoost` は単一 seed の CV ではわずかに良く見えたが、Public LB `0.75598` で `exp007` の `0.77511` を下回った
+- `exp014` の見直しで、`exp013` の優位は複数 seed と holdout で安定しないことを確認した
+- Titanic の Public LB にはリーク由来の上位解法が混ざるため、このディレクトリでは `exp007` を実質的な到達点として扱う
+
 ## 推奨する命名ルール
 
 - notebook: `expXXX_<topic>.ipynb`

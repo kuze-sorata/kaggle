@@ -13,7 +13,7 @@
 - Date: 2026-05-22
 - Phase: EDA
 - Change: feature inspection
-- Result: CV TBD / LB TBD
+- Result: CV N/A / LB N/A
 - Status: Done
 
 ## exp003
@@ -37,7 +37,7 @@
 - Date: 2026-05-22
 - Phase: Feature
 - Change: add `Title` + `HasCabin`
-- Result: CV 0.82826 / LB TBD
+- Result: CV 0.82826 / LB Not Submitted
 - Status: Done
 
 ## exp006
@@ -56,6 +56,14 @@
 - Result: CV 0.83614 / LB 0.77511
 - Status: Submitted
 
+## exp008
+
+- Date: 2026-05-22
+- Phase: Feature
+- Change: add `FareBand` on top of `Title` + `FamilyGroup`
+- Result: CV 0.82827 / LB Not Submitted
+- Status: Done
+
 ## exp009
 
 - Date: 2026-05-22
@@ -64,10 +72,42 @@
 - Result: CV 0.83275 / LB Not Submitted
 - Status: Done
 
-## exp008
+## exp010
 
-- Date: 2026-05-22
+- Date: 2026-05-25
 - Phase: Feature
-- Change: add `FareBand` on top of `Title` + `FamilyGroup`
-- Result: CV 0.82827 / LB TBD
+- Change: add `AgeBand` on top of `Title` + `FamilyGroup` + `SexPclass`
+- Result: CV 0.83053 / LB Not Submitted
+- Status: Done
+
+## exp011
+
+- Date: 2026-05-25
+- Phase: Feature
+- Change: add `TicketGroupSize` on top of `Title` + `FamilyGroup` + `SexPclass`
+- Result: CV 0.83501 / LB Not Submitted
+- Status: Done
+
+## exp012
+
+- Date: 2026-05-25
+- Phase: Model
+- Change: replace `LogisticRegression` with `RandomForest` on top of `Title` + `FamilyGroup` + `SexPclass`
+- Result: CV 0.80808 / LB Not Submitted
+- Status: Done
+
+## exp013
+
+- Date: 2026-05-25
+- Phase: Model
+- Change: replace `LogisticRegression` with `CatBoost` on top of `Title` + `FamilyGroup` + `SexPclass`
+- Result: CV 0.83839 / LB 0.75598
+- Status: Done
+
+## exp014
+
+- Date: 2026-05-25
+- Phase: Validation
+- Change: review CV stability for `exp007` vs `exp013` across multiple seeds and holdout splits
+- Result: `exp013` gain was unstable; holdout mean delta was negative
 - Status: Done

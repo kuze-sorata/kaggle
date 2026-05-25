@@ -9,3 +9,4 @@ models/
 *.joblib
 *.csv
 !submissions/.gitkeep
+catboost_info/

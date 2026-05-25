@@ -17,3 +17,5 @@
 - 親を使うときは、最初に `AGENTS.md` と `AGENTS/parent.md` を読む
 - 子を使うときは、最初に `AGENTS.md` と `AGENTS/child.md` を読む
 - コンペごとの現在地は `competitions/<competition_name>/STATUS.md` を見る
+- 親が `STATUS.md` で experiment id を予約し、子へ割り当ててから実験を始める
+- 子は `STATUS.md` に自分の割り当てがない状態では新規実験を開始しない

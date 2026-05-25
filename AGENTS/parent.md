@@ -22,6 +22,16 @@
 - 採用した変更だけを `src/features.py`, `src/train.py`, `src/predict.py` に反映する
 - `STATUS.md` の baseline と予約情報を更新する
 
+## Reservation Workflow
+
+1. `STATUS.md` の baseline、`Next available experiment id`、`Active Assignments` を確認する
+2. 新しい仮説ごとに連番の experiment id を予約する
+3. `Active Assignments` に owner、仮説、write scope、status を書く
+4. `Next available experiment id` を次の未使用番号へ進める
+5. その内容を前提として子エージェントへ指示を渡す
+6. 子の完了後、結果を `STATUS.md` に反映し、assignment を closed にするか削除する
+7. 採用仮説があれば baseline を更新し、正式コードへ反映する
+
 ## Default Work Split
 
 - 親が触るもの:
@@ -41,6 +51,8 @@
 - 新しい仮説は、現在の baseline に対して 1 変更だけ加えて比較させる
 - 子に曖昧な依頼をしない
 - 子ごとに experiment id、仮説、write scope を明示する
+- 親が `STATUS.md` を更新する前に子へ新しい experiment id を口頭だけで渡さない
+- 同じ仮説を複数の子に渡す場合も、experiment id は必ず分ける
 - 子が同じ正式コードを触らないようにする
 - 実験の詳細実装を子に任せても、採用判断と正式反映は親が引き取る
 
@@ -52,6 +64,7 @@
 - 担当する experiment id
 - 仮説名
 - 書き込み可能なファイル範囲
+- `STATUS.md` 上の assignment owner 名
 - `src/` を触らないこと
 - 先に `AGENTS.md` と `STATUS.md` を読むこと
 
