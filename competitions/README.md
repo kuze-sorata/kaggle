@@ -2,7 +2,7 @@
 
 ここには、各 Kaggle コンペごとの作業フォルダを置きます。
 
-進め方の共通ルールは [docs/kaggle_workflow.md](/home/sora/dev/kaggle/docs/kaggle_workflow.md) と [docs/codex_collaboration.md](/home/sora/dev/kaggle/docs/codex_collaboration.md) を参照します。
+進め方の共通ルールは `docs/kaggle_workflow.md` と `docs/codex_collaboration.md` を参照します。
 
 ## コンペフォルダの中身
 
@@ -23,5 +23,5 @@
 ## 基本運用
 
 - 進行は共通フローに沿って進める
-- 実験ログの書式は [docs/experiment_log_template.md](/home/sora/dev/kaggle/docs/experiment_log_template.md) を基準にする
+- 実験ログの書式は `docs/experiment_log_template.md` を基準にする
 - コンペ固有 README には、データ配置、実行コマンド、固有注意点だけを書く

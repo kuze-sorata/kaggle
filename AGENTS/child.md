@@ -7,8 +7,8 @@
 
 ## Must Read First
 
-1. `/home/sora/dev/kaggle/AGENTS.md`
-2. `/home/sora/dev/kaggle/competitions/<competition_name>/STATUS.md`
+1. `AGENTS.md`
+2. `competitions/<competition_name>/STATUS.md`
 3. 親から渡された担当 experiment id と仮説
 
 ## Responsibilities

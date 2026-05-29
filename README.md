@@ -30,6 +30,7 @@ kaggle/
 
 ## 運用方針
 
+- Python はリポジトリルートの共通 `.venv` を使う
 - 新しいコンペは `templates/tabular_baseline` を起点に始める
 - コンペ固有の作業は `competitions/<competition_name>/` にまとめる
 - 再利用できるコードは `shared/` に置いて重複を減らす
@@ -39,6 +40,21 @@ kaggle/
 - コンペごとの実験は `competitions/<competition_name>/experiments/` 配下で管理する
 - `data/` は Git 管理しない
 - 大きな生データ、モデル成果物、Notebook のキャッシュはコミットしない
+
+## 共通 Python 環境
+
+```powershell
+cd C:\Users\21td031\dev\kaggle
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+Kaggle CLI の認証情報をこのワークスペース内で扱う場合は、`.kaggle/` を使います。このディレクトリは Git 管理外です。
+
+```powershell
+$env:KAGGLE_CONFIG_DIR = "$PWD\.kaggle"
+```
 
 ## 言語方針
 

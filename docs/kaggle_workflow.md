@@ -1,6 +1,6 @@
 # Kaggle の進め方
 
-このドキュメントは、個別コンペではなく、`/home/sora/dev/kaggle` 全体で共通に使う標準ワークフローをまとめたものです。
+このドキュメントは、個別コンペではなく、`C:\Users\21td031\dev\kaggle` 全体で共通に使う標準ワークフローをまとめたものです。
 
 ## 目的
 
@@ -34,12 +34,12 @@
 7. `competitions/<competition_name>/submissions/`
 8. `competitions/<competition_name>/src/`
 
-`.venv` は自動生成前提ではなく、作業開始時に各コンペ配下で明示的に作る。
+`.venv` はリポジトリルートに共通環境として作る。各コンペ配下には個別の `.venv` を作らない。
 
-```bash
-cd competitions/<competition_name>
-python3 -m venv .venv
-source .venv/bin/activate
+```powershell
+cd C:\Users\21td031\dev\kaggle
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
