@@ -11,9 +11,18 @@
 
 ## exp002
 
-- Date: TBD
+- Date: 2026-05-29
 - Phase: EDA
 - Change: user-written exploratory analysis for deeper data understanding
 - Result: CV N/A / LB N/A
-- Status: Reserved
-- Notes: baseline 作成前に、ユーザー自身がコードを書いて納得いくまで EDA を行う。ここで得た観察を後続の仮説検証に使う。
+- Status: Done
+- Notes: `MSSubClass`, `MSZoning`, `LotFrontage`, `LotArea`, `Street` などを手作業で確認し、土地面積、欠損、品質、築年数、カテゴリ特徴量の扱いを後続仮説として整理した。次は baseline と CV を作る。
+
+## exp003
+
+- Date: TBD
+- Phase: Baseline
+- Change: 最小限の前処理とモデルで baseline / CV を作成する
+- Result: TBD
+- Status: Planned
+- Notes: `exp002` の仮説検証に入る前に、比較基準となる再現可能な baseline を作る。
