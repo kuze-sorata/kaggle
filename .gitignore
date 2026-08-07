@@ -12,3 +12,6 @@ models/
 *.csv
 !submissions/.gitkeep
 catboost_info/
+
+# Private SIGNATE competition workspace (managed by its own local Git repository)
+/competitions/signate_tech_ocean_student_cup_2026/
