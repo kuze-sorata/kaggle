@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+outputs/
+*.html
+*.json
+*.log
+*.egg-info/
+pytest-cache-files-*/
+!decks/
+!decks/*.csv

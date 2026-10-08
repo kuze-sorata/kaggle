@@ -4,27 +4,27 @@
 
 ## Current Baseline
 
-- Baseline experiment: `TBD`
-- Baseline deck: `TBD`
-- Local evaluation: `not started`
+- Baseline experiment: `exp001`
+- Baseline deck: `decks/exp001_deck.csv`
+- Local evaluation: `completed (100 random-vs-random matches, 0 errors)`
 - Kaggle submission: `not started`
 
 ## Current Direction
 
-- まずは合法手を安定して返せる最小エージェントを実装する。
-- 固定デッキで自己対戦と複数ベースライン対戦を再現可能にする。
+- 合法手を安定して返せるランダムベースラインを実装済み。
+- 固定デッキで自己対戦と複数ベースライン対戦を同一条件で比較する。
 - その後、ヒューリスティック、探索、相手の不完全情報推定を順に比較する。
 
 ## Experiment ID Reservation
 
-- Next available experiment id: `exp001`
+- Next available experiment id: `exp002`
 - Reserved: none
 
 ## Active Assignments
 
 - Owner: `User`
   - Reserved experiment: none
-  - Status: `not started`
+  - Status: `exp001 completed; next work starts at exp002`
 
 ## Workflow
 
