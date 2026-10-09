@@ -13,18 +13,21 @@
 
 - 合法手を安定して返せるランダムベースラインを実装済み。
 - 固定デッキで自己対戦と複数ベースライン対戦を同一条件で比較する。
-- その後、ヒューリスティック、探索、相手の不完全情報推定を順に比較する。
+- exp002の攻撃優先・終了回避ヒューリスティックは評価済みだが、baselineを下回った。
+- exp003のエネルギー付与優先はexp002を上回ったが、random baselineには届かなかった。
+- exp004の選択個数ランダム化はmax-count randomに対して席順合算35.5%（71/200）で、baselineを下回った。
+- 次は付与先・攻撃対象・カード効果を考慮した行動評価を比較する。
 
 ## Experiment ID Reservation
 
-- Next available experiment id: `exp002`
+- Next available experiment id: `exp005`
 - Reserved: none
 
 ## Active Assignments
 
 - Owner: `User`
   - Reserved experiment: none
-  - Status: `exp001 completed; next work starts at exp002`
+  - Status: `exp004 completed; baseline remains exp001; next work starts at exp005`
 
 ## Workflow
 
