@@ -4,10 +4,10 @@ The competition workspace for the Kaggle Pokémon Trading Card Game AI Battle Ch
 
 ## Directory layout
 
-- `agent/`: Submission agent code. The entry point will be `main.py`.
-- `decks/`: Deck lists, card ID references, and deck-selection experiments.
-- `simulator/`: Local simulator setup, adapters, and evaluation harnesses.
-- `experiments/`: Competition-specific experiment records.
+- `agent/`: Current submission candidate. The entry point is `main.py`.
+- `decks/`: Shared deck files; experiment-specific decks live with the experiment.
+- `simulator/`: Reusable local simulator setup, adapters, and evaluation harnesses.
+- `experiments/`: Experiment records and per-experiment snapshots/artifacts.
 - `notebooks/`: Exploratory analysis and replay inspection notebooks.
 - `STATUS.md`: Shared project status and experiment reservations.
 - `TODO.md`: Current work queue.
@@ -30,15 +30,16 @@ dependencies are managed by `uv`.
 ```powershell
 uv sync --extra dev
 uv run pytest -q
-uv run python -m simulator.run_match --deck decks\exp001_deck.csv --seed 0 --render outputs\exp001_match.html
-uv run python -m simulator.inspect_observation --deck decks\exp001_deck.csv --output outputs\exp001_observations.json
-uv run python -m simulator.match_report --observations outputs\exp001_observations.json --output outputs\exp001_report.md
-uv run python -m simulator.run_tournament --deck decks\exp001_deck.csv --games 100 --output outputs\exp001_random_vs_random.json
+uv run python -m simulator.run_match --deck experiments\exp001\decks\exp001_deck.csv --seed 0 --render experiments\exp001\outputs\exp001_match.html
+uv run python -m simulator.inspect_observation --deck experiments\exp001\decks\exp001_deck.csv --output experiments\exp001\outputs\exp001_observations.json
+uv run python -m simulator.match_report --observations experiments\exp001\outputs\exp001_observations.json --output experiments\exp001\outputs\exp001_report.md
+uv run python -m simulator.run_tournament --deck experiments\exp001\decks\exp001_deck.csv --games 100 --output experiments\exp001\outputs\exp001_random_vs_random.json
 ```
 
 The submission entry point is `agent/main.py`. It is currently a safe random
 baseline; strategy experiments will be added only after the simulator and
 evaluation harness are stable.
 
-For human review, open the generated `exp001_match.html` for the visual CABT
-replay and `exp001_report.md` for the decision-by-decision text report.
+For human review, open `experiments/exp001/outputs/exp001_match.html` for the
+visual CABT replay and `experiments/exp001/outputs/exp001_report.md` for the
+decision-by-decision text report.

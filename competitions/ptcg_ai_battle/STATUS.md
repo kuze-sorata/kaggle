@@ -5,7 +5,7 @@
 ## Current Baseline
 
 - Baseline experiment: `exp001`
-- Baseline deck: `decks/exp001_deck.csv`
+- Baseline deck: `experiments/exp001/decks/exp001_deck.csv`
 - Local evaluation: `completed (100 random-vs-random matches, 0 errors)`
 - Kaggle submission: `not started`
 
@@ -31,4 +31,6 @@
 1. 実験開始前にこのファイルで `expXXX` を予約する。
 2. Notebook、提出物、実験ログは同じ実験番号で管理する。
 3. 実験結果は `experiments/expXXX.md` に短く事実ベースで記録する。
-4. ベースラインの昇格とこのファイルの更新は親エージェントが担当する。
+4. 実験固有のAIコード、デッキ、観測スキーマ、生成物は
+   `experiments/expXXX/` に保存する。
+5. ベースラインの昇格とこのファイルの更新は親エージェントが担当する。
