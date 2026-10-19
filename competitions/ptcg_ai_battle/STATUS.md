@@ -4,30 +4,29 @@
 
 ## Current Baseline
 
-- Baseline experiment: `exp001`
-- Baseline deck: `experiments/exp001/decks/exp001_deck.csv`
-- Local evaluation: `completed (100 random-vs-random matches, 0 errors)`
+- Baseline experiment: `exp005`
+- Baseline deck: `experiments/exp005/decks/exp005_deck.csv`
+- Local evaluation: `completed (400 matches, 0 errors; exp005 beat random in 174/200 seat-balanced matches)`
 - Kaggle submission: `not started`
 
 ## Current Direction
 
-- 合法手を安定して返せるランダムベースラインを実装済み。
+- 合法手を安定して返し、準備行動を攻撃より先に行うexp005 baselineを実装済み。
 - 固定デッキで自己対戦と複数ベースライン対戦を同一条件で比較する。
-- exp002の攻撃優先・終了回避ヒューリスティックは評価済みだが、baselineを下回った。
-- exp003のエネルギー付与優先はexp002を上回ったが、random baselineには届かなかった。
-- exp004の選択個数ランダム化はmax-count randomに対して席順合算35.5%（71/200）で、baselineを下回った。
-- 次は付与先・攻撃対象・カード効果を考慮した行動評価を比較する。
+- exp002〜exp004の単純な行動優先・選択個数変更は、exp001 random baselineを下回った。
+- exp005は攻撃前に準備行動を使い切る方針で、random相手に席順合算87%（174/200）を記録し、新baselineに昇格した。
+- 次はデッキ候補や行動評価を追加し、exp005を基準に比較する。
 
 ## Experiment ID Reservation
 
-- Next available experiment id: `exp005`
+- Next available experiment id: `exp006`
 - Reserved: none
 
 ## Active Assignments
 
 - Owner: `User`
   - Reserved experiment: none
-  - Status: `exp004 completed; baseline remains exp001; next work starts at exp005`
+  - Status: `exp005 completed; baseline promoted to exp005; next work starts at exp006`
 
 ## Workflow
 

@@ -36,9 +36,9 @@ uv run python -m simulator.match_report --observations experiments\exp001\output
 uv run python -m simulator.run_tournament --deck experiments\exp001\decks\exp001_deck.csv --games 100 --output experiments\exp001\outputs\exp001_random_vs_random.json
 ```
 
-The submission entry point is `agent/main.py`. It is currently a safe random
-baseline; strategy experiments will be added only after the simulator and
-evaluation harness are stable.
+The submission entry point is `agent/main.py`. The current baseline performs
+available setup actions before attacking or ending the turn. Earlier random
+baselines remain available in the experiment snapshots for comparison.
 
 For human review, open `experiments/exp001/outputs/exp001_match.html` for the
 visual CABT replay and `experiments/exp001/outputs/exp001_report.md` for the

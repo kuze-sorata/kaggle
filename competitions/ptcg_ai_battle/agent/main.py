@@ -1,23 +1,19 @@
-"""Submission entry point.
-
-This is intentionally a safe random baseline.  Strategy code will be added
-only after the simulator and evaluation harness are verified.
-"""
+"""Submission entry point for the current action-exhaustion baseline."""
 
 from __future__ import annotations
 
 from collections.abc import Mapping
 
-from agent.random_agent import random_agent
+from agent.baseline_agent import baseline_agent
 
 
 def agent(
     observation: Mapping[str, object],
     configuration: Mapping[str, object] | None = None,
 ) -> list[int]:
-    """Return a legal-shaped selection for the current observation."""
+    """Return a selection following the current exp005 baseline policy."""
 
-    return random_agent(observation, configuration)
+    return baseline_agent(observation, configuration)
 
 
 def main(
